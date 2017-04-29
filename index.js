@@ -3,7 +3,6 @@ var server = restify.createServer();
 server.use(restify.bodyParser());
 const port = 8088;
 
-ahhh
 var auth = require('./routes/auth');
 
 var mongoose = require('mongoose');

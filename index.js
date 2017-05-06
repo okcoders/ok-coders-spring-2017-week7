@@ -19,7 +19,7 @@ db.once('open', function(){
 	console.log('Mongoose connection established');
 });
 
-server.post('/user/add', auth.create);
+server.post('/user/add', auth.verify, auth.create);
 server.post('/user/login', auth.read);
 
 server.get('/', restify.serveStatic({
@@ -27,7 +27,7 @@ server.get('/', restify.serveStatic({
 	default: "index.html"
 }));
 
-server.get(/\/private\//, restify.serveStatic({
+server.get(/\/private\//, auth.verify, restify.serveStatic({
 	directory: './client',
 	file: 'private.html'
 }));

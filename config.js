@@ -2,17 +2,18 @@
 function _development(){
 	return {
 		"mongodb": "mongodb://localhost/testing",
+		"secret": "123456789",
 		"port": 8088
 	}
 }
 
 function _production(){
-	if(!process.env.NODE_PASSWORD){ 
-		throw new Error("MISSING PASSWORD");
+	if(!process.env.NODE_JWT_SECRET){ 
+		throw new Error("MIssing NODE_JWT_SECRET");
 	}
 	return {
 		"mongodb": "mongodb://locahost/production",
-		"password": process.env.NODE_PASSWORD,
+		"secret": process.env.NODE_JWT_SECRET,
 		"port":  9000
 	}
 }
